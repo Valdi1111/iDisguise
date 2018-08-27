@@ -12,7 +12,7 @@ public abstract class ProtocolLibPacketListener extends PacketAdapter {
     private final iDisguise addon;
     private final ProtocolManager protocolManager;
 
-    protected ProtocolLibPacketListener(iDisguise addon, ListenerPriority listenerPriority, PacketType ... arrpacketType) {
+    protected ProtocolLibPacketListener(iDisguise addon, ListenerPriority listenerPriority, PacketType... arrpacketType) {
         super(addon, listenerPriority, arrpacketType);
         
         this.addon = addon;

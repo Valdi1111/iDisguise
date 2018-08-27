@@ -63,6 +63,7 @@ import org.valdi.entities.management.VersionHelper;
 import org.valdi.entities.management.channel.ChannelInjector;
 import org.valdi.entities.management.hooks.ScoreboardHooks;
 import org.valdi.entities.management.util.EntityIdList;
+import org.valdi.entities.packets.ProtocolLibPacketsManager;
 import org.valdi.st.CustomSkins;
 import org.valdi.st.Main;
 import org.valdi.st.ParseCommand;
@@ -138,6 +139,7 @@ public class iDisguise extends JavaPlugin {
 		this.getCommand("parsedisrange").setTabCompleter(cmd);
 		Main.getInstance().onEnable();
 		CustomSkins.getInstance().onEnable();
+		new ProtocolLibPacketsManager(this);
 	}
 	
 	public void onDisable() {

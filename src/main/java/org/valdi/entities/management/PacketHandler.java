@@ -431,7 +431,7 @@ public final class PacketHandler {
 	}
 	
 	public static Object handlePacketPlayInUseEntity(final Player observer, final Object packet) throws Exception {
-		final LivingEntity livingEntity = EntityIdList.getEntityByEntityId(PacketPlayInUseEntity_entityId.getInt(packet));
+		/*final LivingEntity livingEntity = EntityIdList.getEntityByEntityId(PacketPlayInUseEntity_entityId.getInt(packet));
 		boolean attack = PacketPlayInUseEntity_getAction.invoke(packet).equals(EnumEntityUseAction_ATTACK.get(null));
 		if(livingEntity != null && livingEntity != observer && DisguiseManager.isDisguisedTo(livingEntity, observer) && !attack) {
 			if(ObjectUtil.equals(DisguiseManager.getDisguise(livingEntity).getType(), DisguiseType.SHEEP, DisguiseType.WOLF)) {
@@ -445,7 +445,7 @@ public final class PacketHandler {
 				}, 2L);
 			}
 			if(livingEntity instanceof Player) Bukkit.getPluginManager().callEvent(new PlayerInteractDisguisedPlayerEvent(observer, (Player)livingEntity));
-		}
+		}*/
 		return packet;
 	}
 	
@@ -459,17 +459,17 @@ public final class PacketHandler {
 				return new Object[] {handlePacketPlayOutPlayerInfo(observer, packet)};
 			} else if(PacketPlayOutEntityDestroy.isInstance(packet)) {
 				return handlePacketPlayOutEntityDestroy(observer, packet);
-			} else if(PacketPlayOutBed.isInstance(packet)) {
+			}/* else if(PacketPlayOutBed.isInstance(packet)) {
 				return new Object[] {handlePacketPlayOutBed(observer, packet)};
 			} else if(PacketPlayOutAnimation.isInstance(packet)) {
 				return new Object[] {handlePacketPlayOutAnimation(observer, packet)};
-			} else if(PacketPlayOutEntityMetadata.isInstance(packet)) {
+			}*/ else if(PacketPlayOutEntityMetadata.isInstance(packet)) {
 				return new Object[] {handlePacketPlayOutEntityMetadata(observer, packet)};
 			} else if(PacketPlayOutEntity.isInstance(packet)) {
 				return new Object[] {handlePacketPlayOutEntity(observer, packet)};
 			} else if(PacketPlayOutEntityTeleport.isInstance(packet)) {
 				return new Object[] {handlePacketPlayOutEntityTeleport(observer, packet)};
-			} else if(PacketPlayOutUpdateAttributes.isInstance(packet)) {
+			}/* else if(PacketPlayOutUpdateAttributes.isInstance(packet)) {
 				return new Object[] {handlePacketPlayOutUpdateAttributes(observer, packet)};
 			} else if(PacketPlayOutCollect.isInstance(packet)) {
 				return new Object[] {handlePacketPlayOutCollect(observer, packet)};
@@ -479,7 +479,7 @@ public final class PacketHandler {
 				return new Object[] {handlePacketPlayOutScoreboardScore(observer, packet)};
 			} else if(replaceSoundEffects && PacketPlayOutNamedSoundEffect.isInstance(packet)) {
 				return new Object[] {handlePacketPlayOutNamedSoundEffect(observer, packet)};
-			}
+			}*/
 			return new Object[] {packet};
 		} catch(Exception e) {
 			if(VersionHelper.debug()) {
@@ -585,15 +585,15 @@ public final class PacketHandler {
 		return customizablePacket;
 	}
 	
-	private static Object handlePacketPlayOutBed(final Player observer, final Object packet) throws Exception {
+	/*private static Object handlePacketPlayOutBed(final Player observer, final Object packet) throws Exception {
 		final Player player = EntityIdList.getPlayerByEntityId(PacketPlayOutBed_entityId.getInt(packet));
 		if(player != null && player != observer && DisguiseManager.isDisguisedTo(player, observer) && !(DisguiseManager.getDisguise(player) instanceof PlayerDisguise)) {
 			return null;
 		}
 		return packet;
-	}
+	}*/
 	
-	private static Object handlePacketPlayOutAnimation(final Player observer, final Object packet) throws Exception {
+	/*private static Object handlePacketPlayOutAnimation(final Player observer, final Object packet) throws Exception {
 		final LivingEntity livingEntity = EntityIdList.getEntityByEntityId(PacketPlayOutAnimation_entityId.getInt(packet));
 		if(livingEntity != null && livingEntity != observer && DisguiseManager.isDisguisedTo(livingEntity, observer) && !(DisguiseManager.getDisguise(livingEntity) instanceof PlayerDisguise)) {
 			if(DisguiseManager.getDisguise(livingEntity) instanceof MobDisguise) {
@@ -607,7 +607,7 @@ public final class PacketHandler {
 			}
 		}
 		return packet;
-	}
+	}*/
 	
 	private static Object handlePacketPlayOutEntityMetadata(final Player observer, final Object packet) throws Exception {
 		final LivingEntity livingEntity = EntityIdList.getEntityByEntityId(PacketPlayOutEntityMetadata_entityId.getInt(packet));
@@ -698,23 +698,23 @@ public final class PacketHandler {
 		return packet;
 	}
 	
-	private static Object handlePacketPlayOutUpdateAttributes(final Player observer, final Object packet) throws Exception {
+	/*private static Object handlePacketPlayOutUpdateAttributes(final Player observer, final Object packet) throws Exception {
 		final LivingEntity livingEntity = EntityIdList.getEntityByEntityId(PacketPlayOutUpdateAttributes_entityId.getInt(packet));
 		if(livingEntity != null && livingEntity != observer && DisguiseManager.isDisguisedTo(livingEntity, observer) && DisguiseManager.getDisguise(livingEntity) instanceof ObjectDisguise) {
 			return null;
 		}
 		return packet;
-	}
+	}*/
 	
-	private static Object handlePacketPlayOutCollect(final Player observer, final Object packet) throws Exception {
+	/*private static Object handlePacketPlayOutCollect(final Player observer, final Object packet) throws Exception {
 		final LivingEntity livingEntity = EntityIdList.getEntityByEntityId(PacketPlayOutCollect_entityId.getInt(packet));
 		if(livingEntity != null && livingEntity != observer && DisguiseManager.isDisguisedTo(livingEntity, observer) && DisguiseManager.getDisguise(livingEntity) instanceof ObjectDisguise) {
 			return null;
 		}
 		return packet;
-	}
+	}*/
 	
-	private static Object handlePacketPlayOutNamedSoundEffect(final Player observer, final Object packet) throws Exception {
+	/*private static Object handlePacketPlayOutNamedSoundEffect(final Player observer, final Object packet) throws Exception {
 		String soundEffect = soundEffectToString(PacketPlayOutNamedSoundEffect_soundEffect.get(packet));
 		LivingEntity livingEntity = EntityIdList.getClosestEntity(new Location(observer.getWorld(), PacketPlayOutNamedSoundEffect_x.getInt(packet) / 8.0, PacketPlayOutNamedSoundEffect_y.getInt(packet) / 8.0, PacketPlayOutNamedSoundEffect_z.getInt(packet) / 8.0), 1.0);
 		if(livingEntity != null && livingEntity != observer && DisguiseManager.isDisguisedTo(livingEntity, observer)) {
@@ -735,9 +735,9 @@ public final class PacketHandler {
 			}
 		}
 		return packet;
-	}
+	}*/
 	
-	private static Object handlePacketPlayOutScoreboardTeam(final Player observer, final Object packet) throws Exception {
+	/*private static Object handlePacketPlayOutScoreboardTeam(final Player observer, final Object packet) throws Exception {
 		if(modifyScoreboardPackets && ObjectUtil.equals(PacketPlayOutScoreboardTeam_action.getInt(packet), 0, 3, 4)) {
 			Object customizablePacket = clonePacket(packet);
 			List<String> entries = (List<String>)PacketPlayOutScoreboardTeam_entries.get(customizablePacket);
@@ -755,9 +755,9 @@ public final class PacketHandler {
 			return customizablePacket;
 		}
 		return packet;
-	}
+	}*/
 	
-	private static Object handlePacketPlayOutScoreboardScore(final Player observer, final Object packet) throws Exception {
+	/*private static Object handlePacketPlayOutScoreboardScore(final Player observer, final Object packet) throws Exception {
 		if(modifyScoreboardPackets) {
 			Player player = Bukkit.getPlayer((String)PacketPlayOutScoreboardScore_entry.get(packet));
 			if(player != null && player != observer && DisguiseManager.isDisguisedTo(player, observer) && DisguiseManager.getDisguise(player) instanceof PlayerDisguise) {
@@ -767,7 +767,7 @@ public final class PacketHandler {
 			}
 		}
 		return packet;
-	}
+	}*/
 	
 	private static Object[] handlePacketPlayOutEntityDestroy(final Player observer, final Object packet) throws Exception {
 		int[] entityIds = (int[])PacketPlayOutEntityDestroy_entityIds.get(packet);
