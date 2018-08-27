@@ -1,9 +1,9 @@
 package org.valdi.st;
 
-import static org.valdi.idisguise.management.Reflection.MinecraftServer_getServer;
-import static org.valdi.idisguise.management.Reflection.MinecraftServer_getUserCache;
-import static org.valdi.idisguise.management.Reflection.UserCache_getProfileById;
-import static org.valdi.idisguise.management.Reflection.UserCache_putProfile;
+import static org.valdi.entities.management.Reflection.MinecraftServer_getServer;
+import static org.valdi.entities.management.Reflection.MinecraftServer_getUserCache;
+import static org.valdi.entities.management.Reflection.UserCache_getProfileById;
+import static org.valdi.entities.management.Reflection.UserCache_putProfile;
 
 import java.util.Locale;
 import java.util.Map;
@@ -14,10 +14,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.LivingEntity;
 import org.inventivetalent.mcwrapper.auth.GameProfileWrapper;
 import org.inventivetalent.mcwrapper.auth.properties.PropertyWrapper;
-import org.valdi.idisguise.iDisguise;
-import org.valdi.idisguise.disguise.Disguise;
-import org.valdi.idisguise.disguise.PlayerDisguise;
-import org.valdi.idisguise.management.DisguiseManager;
+import org.valdi.entities.iDisguise;
+import org.valdi.entities.disguise.Disguise;
+import org.valdi.entities.disguise.PlayerDisguise;
+import org.valdi.entities.management.DisguiseManager;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;

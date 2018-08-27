@@ -18,9 +18,9 @@ import org.inventivetalent.data.async.DataCallback;
 import org.inventivetalent.data.mapper.AsyncCacheMapper;
 import org.inventivetalent.data.mapper.MapMapper;
 import org.inventivetalent.mcwrapper.auth.GameProfileWrapper;
-import org.valdi.idisguise.iDisguise;
-import org.valdi.idisguise.disguise.PlayerDisguise;
-import org.valdi.idisguise.management.PacketHandler;
+import org.valdi.entities.iDisguise;
+import org.valdi.entities.disguise.PlayerDisguise;
+import org.valdi.entities.management.PacketHandler;
 import org.valdi.st.event.NickNamerSelfUpdateEvent;
 import org.valdi.st.event.PlayerRefreshEvent;
 

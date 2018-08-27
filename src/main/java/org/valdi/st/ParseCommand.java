@@ -11,7 +11,7 @@ import org.bukkit.craftbukkit.v1_12_R1.entity.CraftLivingEntity;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
-import org.valdi.idisguise.iDisguise;
+import org.valdi.entities.iDisguise;
 
 public class ParseCommand implements CommandExecutor, TabCompleter {
 	private final iDisguise plugin;

@@ -23,8 +23,8 @@ import org.mineskin.MineskinClient;
 import org.mineskin.SkinOptions;
 import org.mineskin.data.Skin;
 import org.mineskin.data.SkinCallback;
-import org.valdi.idisguise.iDisguise;
-import org.valdi.idisguise.disguise.PlayerDisguise;
+import org.valdi.entities.iDisguise;
+import org.valdi.entities.disguise.PlayerDisguise;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;

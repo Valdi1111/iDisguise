@@ -62,6 +62,40 @@
 			<version>4.4.0-SNAPSHOT</version>
 			<scope>provided</scope>
     	</dependency>
+   		
+  	<dependency>
+  		<groupId>spigotmc.org</groupId>
+  		<artifactId>spigot-1.12</artifactId>
+  		<version>1.12</version>
+  		<scope>provided</scope>
+  	</dependency>
+    	
+    <dependency>
+        <groupId>org.inventivetalent</groupId>
+        <artifactId>mc-wrappers</artifactId>
+        <version>1.0.3-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+        <groupId>org.inventivetalent</groupId>
+        <artifactId>data-api</artifactId>
+        <version>1.2.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+        <groupId>org.inventivetalent</groupId>
+        <artifactId>reflectionhelper</artifactId>
+        <version>1.14.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+        <groupId>org.inventivetalent</groupId>
+        <artifactId>apimanager</artifactId>
+        <version>1.0.3-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+        <groupId>org.inventivetalent.packetlistener</groupId>
+        <artifactId>api</artifactId>
+        <version>3.7.0-SNAPSHOT</version>
+		<scope>provided</scope>
+    </dependency>
   	</dependencies>
   
   	<repositories>
@@ -86,16 +120,6 @@
 	<build>
 		<defaultGoal>clean install</defaultGoal>
 		<finalName>${project.name} v${project.version}</finalName>
-		<resources>
-			<resource>
-				<targetPath>.</targetPath>
-				<filtering>true</filtering>
-				<directory>${basedir}/src/main/resources</directory>
-				<includes>
-					<include>*.yml</include>
-				</includes>
-			</resource>
-		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

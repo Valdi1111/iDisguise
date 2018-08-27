@@ -2,8 +2,8 @@ package org.valdi.st;
 
 import java.util.UUID;
 
-import org.valdi.idisguise.disguise.Disguise;
-import org.valdi.idisguise.disguise.DisguiseType;
+import org.valdi.entities.disguise.Disguise;
+import org.valdi.entities.disguise.DisguiseType;
 
 /**
  * Represents a disguise as a player.
