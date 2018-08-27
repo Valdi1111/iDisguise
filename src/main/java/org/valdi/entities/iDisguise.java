@@ -926,7 +926,7 @@ public class iDisguise extends JavaPlugin {
 		// reset config values
 		PacketHandler.showOriginalPlayerName = configuration.NAME_TAG_SHOWN;
 		PacketHandler.modifyPlayerListEntry = configuration.MODIFY_PLAYER_LIST_ENTRY;
-		DisguiseManager.modifyScoreboardPackets = PacketHandler.modifyScoreboardPackets = configuration.MODIFY_SCOREBOARD_PACKETS;
+		PacketHandler.modifyScoreboardPackets = configuration.MODIFY_SCOREBOARD_PACKETS;
 		PacketHandler.replaceSoundEffects = configuration.REPLACE_SOUND_EFFECTS;
 		PacketHandler.bungeeCord = configuration.BUNGEE_CORD;
 		
