@@ -21,6 +21,7 @@ org\valdi\st\SkinManager$2$1.class
 org\valdi\entities\disguise\ChestedHorseDisguise.class
 org\valdi\st\event\PlayerJoinReplacementEvent.class
 org\valdi\entities\management\channel\InjectedPlayerConnection1121.class
+org\valdi\entities\management\profile\GameProfileHelper.class
 org\valdi\st\SkinLoader$1.class
 org\valdi\entities\EventListener$2.class
 org\valdi\entities\management\hooks\ScoreboardHooks$1.class
