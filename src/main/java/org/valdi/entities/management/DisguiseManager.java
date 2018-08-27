@@ -139,35 +139,14 @@ public final class DisguiseManager {
 	public static Set<Object> getDisguisedEntities() {
 		Set<UUID> origin = disguiseMap.getDisguisedEntities();
 		Set<Object> destination = new HashSet<Object>();
-		if(VersionHelper.require1_12()) {
-			for(UUID disguisable : origin) {
-				Entity entity = Bukkit.getEntity(disguisable);
-				if(entity != null) {
-					destination.add(entity);
-				} else {
-					OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(disguisable);
-					if(offlinePlayer != null) {
-						destination.add(offlinePlayer);
-					}
-				}
-			}
-		} else {
-			try {
-				Object minecraftServer = MinecraftServer_getServer.invoke(null);
-				for(UUID disguisable : origin) {
-					Object entity = MinecraftServer_getEntityByUID.invoke(minecraftServer, disguisable);
-					if(entity != null) {
-						destination.add(Entity_getBukkitEntity.invoke(entity));
-					} else {
-						OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(disguisable);
-						if(offlinePlayer != null) {
-							destination.add(offlinePlayer);
-						}
-					}
-				}
-			} catch(Exception e) {
-				if(VersionHelper.debug()) {
-					iDisguise.getInstance().getLogger().log(Level.SEVERE, "An unexpected exception occured.", e);
+		for(UUID disguisable : origin) {
+			Entity entity = Bukkit.getEntity(disguisable);
+			if(entity != null) {
+				destination.add(entity);
+			} else {
+				OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(disguisable);
+				if(offlinePlayer != null) {
+					destination.add(offlinePlayer);
 				}
 			}
 		}
@@ -417,14 +396,7 @@ public final class DisguiseManager {
 			return;
 		}
 		
-		// are we in 1.9+ ?
-		if(VersionHelper.require1_9()) {
-			showEntityToAll0(livingEntity);
-		} else {
-			
-			// we have to delay the reappearance for 1.8.0 clients
-			Bukkit.getScheduler().runTaskLater(iDisguise.getInstance(), () -> showEntityToAll0(livingEntity), 10L);
-		}
+		showEntityToAll0(livingEntity);
 	}
 	
 	private static void showEntityToAll0(LivingEntity livingEntity) {
@@ -455,14 +427,7 @@ public final class DisguiseManager {
 			return;
 		}
 		
-		// are we in 1.9+ ?
-		if(VersionHelper.require1_9()) {
-			showEntityToOne0(observer, livingEntity);
-		} else {
-			
-			// we have to delay the reappearance for 1.8.0 clients
-			Bukkit.getScheduler().runTaskLater(iDisguise.getInstance(), () -> showEntityToOne0(observer, livingEntity), 10L);
-		}
+		showEntityToOne0(observer, livingEntity);
 	}
 	
 	private static void showEntityToOne0(Player observer, LivingEntity livingEntity) {
@@ -479,11 +444,7 @@ public final class DisguiseManager {
 	}
 	
 	private static void showPlayerToAll(final Player player) {
-		if(VersionHelper.require1_9()) {
-			showPlayerToAll0(player);
-		} else {
-			Bukkit.getScheduler().runTaskLater(iDisguise.getInstance(), () -> showPlayerToAll0(player), 10L);
-		}
+		showPlayerToAll0(player);
 	}
 	
 	private static void showPlayerToAll0(Player player) {
@@ -541,11 +502,7 @@ public final class DisguiseManager {
 	}
 	
 	private static void showPlayerToOne(final Player observer, final Player player) {
-		if(VersionHelper.require1_9()) {
-			showPlayerToOne0(observer, player);
-		} else {
-			Bukkit.getScheduler().runTaskLater(iDisguise.getInstance(), () -> showPlayerToOne0(observer, player), 10L);
-		}
+		showPlayerToOne0(observer, player);
 	}
 	
 	private static void showPlayerToOne0(Player observer, Player player) {
