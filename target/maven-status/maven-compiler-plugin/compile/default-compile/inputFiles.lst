@@ -8,6 +8,7 @@ C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\disguise\AgeableDi
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\disguise\ZombieVillagerDisguise.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\st\SkinLoader.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\packets\package-info.java
+C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\packets\handlers\HandlerPlayOutUpdateAttributes.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\st\event\PlayerRefreshEvent.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\st\event\ScoreboardReplacementEvent.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\io\Metrics.java
@@ -49,6 +50,7 @@ C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\management\Disguis
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\st\event\ChatInReplacementEvent.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\io\UpdateCheck.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\st\Callback.java
+C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\packets\handlers\HandlerPlayOutNamedSoundEffect.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\disguise\FallingBlockDisguise.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\management\Reflection.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\disguise\LlamaDisguise.java
@@ -56,6 +58,7 @@ C:\Users\david\git\iDisguise\src\main\java\org\valdi\st\event\NameReplacementEve
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\st\event\ProfileDisguiseEvent.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\io\Configuration.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\disguise\ChestedHorseDisguise.java
+C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\packets\handlers\HandlerPlayOutScoreboardTeam.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\st\event\PlayerJoinReplacementEvent.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\management\profile\GameProfileHelper.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\disguise\PlayerDisguise.java
@@ -67,6 +70,7 @@ C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\api\EntityUndisgui
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\disguise\MinecartDisguise.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\st\Main.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\management\util\EntityIdList.java
+C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\packets\handlers\HandlerPlayOutScoreboardScore.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\st\ClassBuilder.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\packets\handlers\HandlerPlayOutEntityTeleport.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\st\event\RandomSkinRequestEvent.java
@@ -79,10 +83,12 @@ C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\management\channel
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\api\PlayerInteractDisguisedPlayerEvent.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\st\SkinContainer.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\management\PacketHandler.java
+C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\management\reflection\EntityHumanNonAbstract.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\st\event\NickNamerSelfUpdateEvent.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\disguise\BoatDisguise.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\st\package-info.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\io\SLAPI.java
+C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\packets\handlers\HandlerPlayOutCollect.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\st\event\ChatOutReplacementEvent.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\disguise\ObjectDisguise.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\st\ISkinManager.java
@@ -100,6 +106,7 @@ C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\management\channel
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\management\util\DisguiseMap.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\disguise\AreaEffectCloudDisguise.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\st\CustomSkins.java
+C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\packets\handlers\AbstractPlayOutEntitySpawn.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\api\OfflinePlayerUndisguiseEvent.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\entities\management\reflection\EntityHumanNonAbstract1121.java
 C:\Users\david\git\iDisguise\src\main\java\org\valdi\st\SkinAPI.java

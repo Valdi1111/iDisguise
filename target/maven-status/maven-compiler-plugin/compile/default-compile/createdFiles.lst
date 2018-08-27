@@ -14,7 +14,6 @@ org\valdi\st\Main$7.class
 org\valdi\st\event\ChatReplacementEvent.class
 org\valdi\entities\disguise\Subtypes$1.class
 org\valdi\entities\disguise\Disguise.class
-org\valdi\entities\management\PacketHandler$3.class
 org\valdi\entities\management\profile\ProfileHelperUID$3.class
 org\valdi\st\event\DisguiseEvent.class
 org\valdi\st\SkinManager$2$1.class
@@ -24,7 +23,6 @@ org\valdi\entities\management\channel\InjectedPlayerConnection1121.class
 org\valdi\entities\management\profile\GameProfileHelper.class
 org\valdi\st\SkinLoader$1.class
 org\valdi\entities\EventListener$2.class
-org\valdi\entities\management\hooks\ScoreboardHooks$1.class
 org\valdi\st\event\ChatInReplacementEvent.class
 org\valdi\st\event\ScoreboardTeamReplacementEvent.class
 org\valdi\st\event\NickNamerSelfUpdateEvent.class
@@ -48,6 +46,7 @@ org\valdi\entities\packets\handlers\HandlerPlayOutEntityTeleport.class
 org\valdi\st\event\NameReplacer.class
 org\valdi\st\Main$5.class
 org\valdi\st\SkinManager$2.class
+org\valdi\entities\packets\handlers\AbstractPlayOutEntitySpawn.class
 org\valdi\st\SkinManager$7$1.class
 org\valdi\entities\packets\handlers\HandlerPlayOutEntity.class
 org\valdi\st\WrappedProfileHelper.class
@@ -66,6 +65,7 @@ org\valdi\st\Main$4.class
 org\valdi\entities\management\DisguiseManager.class
 org\valdi\entities\disguise\OutdatedServerException.class
 org\valdi\entities\disguise\RabbitDisguise.class
+org\valdi\entities\packets\handlers\HandlerPlayOutScoreboardTeam.class
 org\valdi\entities\disguise\MinecartDisguise.class
 org\valdi\entities\packets\ProtocolLibPacketListener.class
 org\valdi\entities\disguise\HorseDisguise.class
@@ -85,7 +85,6 @@ org\valdi\st\ParseCommand.class
 org\valdi\entities\disguise\FallingBlockDisguise.class
 org\valdi\entities\management\PacketHandler$2.class
 org\valdi\entities\EventListener$3.class
-org\valdi\entities\management\hooks\ScoreboardHooks$2.class
 org\valdi\st\event\SkinLoadedEvent.class
 org\valdi\entities\disguise\ObjectDisguise$1.class
 org\valdi\entities\packets\handlers\HandlerPlayOutBed.class
@@ -126,6 +125,7 @@ org\valdi\st\event\PlayerRefreshEvent.class
 org\valdi\st\PacketListener$1.class
 org\valdi\entities\management\util\DisguiseMap.class
 org\valdi\st\SkinManager$4.class
+org\valdi\entities\management\reflection\EntityHumanNonAbstract.class
 org\valdi\st\Main$3.class
 org\valdi\entities\disguise\AreaEffectCloudDisguise.class
 org\valdi\entities\api\EntityDisguiseEvent.class
@@ -159,15 +159,19 @@ org\valdi\entities\packets\handlers\HandlerPlayOutNamedEntitySpawn.class
 org\valdi\st\ISkinManager.class
 org\valdi\entities\disguise\DisguiseType$Matcher.class
 org\valdi\entities\disguise\StyledHorseDisguise$Style.class
+org\valdi\entities\packets\handlers\HandlerPlayOutNamedSoundEffect.class
 org\valdi\entities\disguise\SizedDisguise.class
 org\valdi\st\Main$2.class
 org\valdi\entities\api\OfflinePlayerDisguiseEvent.class
+org\valdi\entities\packets\handlers\HandlerPlayOutUpdateAttributes.class
 org\valdi\st\event\NickNamerUpdateEvent.class
 org\valdi\entities\disguise\LlamaDisguise$SaddleColor.class
+org\valdi\entities\packets\handlers\HandlerPlayOutScoreboardScore.class
 org\valdi\st\SkinManager$1$1.class
 org\valdi\st\SkinManager$6.class
 org\valdi\entities\disguise\BoatDisguise.class
 org\valdi\st\SkinManager$5$1.class
+org\valdi\entities\packets\handlers\HandlerPlayOutCollect.class
 org\valdi\st\CustomSkins.class
 org\valdi\entities\disguise\EndermanDisguise.class
 org\valdi\st\Main$8.class
