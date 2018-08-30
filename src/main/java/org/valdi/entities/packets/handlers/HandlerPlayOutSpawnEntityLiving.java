@@ -46,11 +46,11 @@ import org.valdi.entities.disguise.WolfDisguise;
 import org.valdi.entities.disguise.ZombieVillagerDisguise;
 import org.valdi.entities.disguise.LlamaDisguise.SaddleColor;
 import org.valdi.entities.management.DisguiseManager;
-import org.valdi.entities.management.PacketHandler;
 import org.valdi.entities.management.VersionHelper;
 import org.valdi.entities.management.profile.GameProfileHelper;
 import org.valdi.entities.management.reflection.EntityHumanNonAbstract;
 import org.valdi.entities.management.util.EntityIdList;
+import org.valdi.entities.packets.PacketOptions;
 
 import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.events.ListenerPriority;
@@ -113,7 +113,7 @@ public class HandlerPlayOutSpawnEntityLiving extends AbstractPlayOutEntitySpawn 
 		final LivingEntity livingEntity = EntityIdList.getEntityByEntityId(entityId);
 		if(livingEntity != null && DisguiseManager.isDisguisedTo(livingEntity, observer)) {
 			List<PacketContainer> spawnPackets = this.getSpawnPackets(livingEntity, e.getPacket());
-			if(DisguiseManager.getDisguise(livingEntity).getType().equals(DisguiseType.PLAYER) && !PacketHandler.modifyPlayerListEntry) {
+			if(DisguiseManager.getDisguise(livingEntity).getType().equals(DisguiseType.PLAYER) && !PacketOptions.modifyPlayerListEntry) {
 				final PacketContainer playerInfoRemovePacket = spawnPackets.get(2);
 				spawnPackets = Arrays.asList(spawnPackets.get(0), spawnPackets.get(1));
 				Bukkit.getScheduler().runTaskLater(iDisguise.getInstance(), () -> {
@@ -169,7 +169,7 @@ public class HandlerPlayOutSpawnEntityLiving extends AbstractPlayOutEntitySpawn 
 				MobDisguise mobDisguise = (MobDisguise) disguise;
 				EntityLiving entity = (EntityLiving) Class.forName(VersionHelper.getNMSPackage() + "." + type.getNMSClass()).getConstructor(World.class).newInstance(entityLiving.getWorld());
 				
-				if(PacketHandler.showOriginalPlayerName) {
+				if(PacketOptions.showOriginalPlayerName) {
 					entity.setCustomName(livingEntity.getName());
 					entity.setCustomNameVisible(true);
 				} else if(mobDisguise.getCustomName() != null && !mobDisguise.getCustomName().isEmpty()) {
@@ -311,7 +311,7 @@ public class HandlerPlayOutSpawnEntityLiving extends AbstractPlayOutEntitySpawn 
 
 				packets.add(spawnPacket);
 				
-				if(!PacketHandler.modifyPlayerListEntry) {
+				if(!PacketOptions.modifyPlayerListEntry) {
 					// remove player list entry
 					PacketContainer pInfoPacket = new PacketContainer(PacketType.Play.Server.PLAYER_INFO);
 					pInfoPacket.getPlayerInfoAction().write(0, PlayerInfoAction.REMOVE_PLAYER);
@@ -327,7 +327,7 @@ public class HandlerPlayOutSpawnEntityLiving extends AbstractPlayOutEntitySpawn 
 				entity.setLocation(loc.getX(), loc.getY(), loc.getZ(), loc.getYaw(), loc.getPitch());
 				entity.h(livingEntity.getEntityId()); // TODO change for 1.13 entity.setId(int id) -> f(int id)
 
-				if(PacketHandler.showOriginalPlayerName) {
+				if(PacketOptions.showOriginalPlayerName) {
 					entity.setCustomName(livingEntity.getName());
 					entity.setCustomNameVisible(true);
 				} else if(objectDisguise.getCustomName() != null && !objectDisguise.getCustomName().isEmpty()) {

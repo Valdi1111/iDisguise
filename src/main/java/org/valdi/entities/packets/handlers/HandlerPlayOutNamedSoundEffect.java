@@ -7,9 +7,9 @@ import org.bukkit.entity.Player;
 import org.valdi.entities.iDisguise;
 import org.valdi.entities.disguise.DisguiseType;
 import org.valdi.entities.management.DisguiseManager;
-import org.valdi.entities.management.PacketHandler;
 import org.valdi.entities.management.Sounds;
 import org.valdi.entities.management.util.EntityIdList;
+import org.valdi.entities.packets.PacketOptions;
 import org.valdi.entities.packets.ProtocolLibPacketListener;
 
 import com.comphenix.protocol.PacketType;
@@ -24,7 +24,7 @@ public class HandlerPlayOutNamedSoundEffect extends ProtocolLibPacketListener {
 	
 	@Override
 	public void onPacketSending(PacketEvent e) {
-		if(!PacketHandler.replaceSoundEffects) {
+		if(!PacketOptions.replaceSoundEffects) {
 			//iDisguise.getInstance().getLogger().info("Skipping sound packet.");
 			return;
 		}

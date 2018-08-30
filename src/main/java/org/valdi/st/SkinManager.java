@@ -20,7 +20,7 @@ import org.inventivetalent.data.mapper.MapMapper;
 import org.inventivetalent.mcwrapper.auth.GameProfileWrapper;
 import org.valdi.entities.iDisguise;
 import org.valdi.entities.disguise.PlayerDisguise;
-import org.valdi.entities.management.PacketHandler;
+import org.valdi.entities.packets.PacketOptions;
 import org.valdi.st.event.NickNamerSelfUpdateEvent;
 import org.valdi.st.event.PlayerRefreshEvent;
 
@@ -87,7 +87,7 @@ public class SkinManager implements ISkinManager {
 			});
 		}
 
-		if (PacketHandler.bungeeCord) { Main.getInstance().sendPluginMessage(Bukkit.getPlayer(uuid), "skin", skinOwner); }
+		if (PacketOptions.bungeeCord) { Main.getInstance().sendPluginMessage(Bukkit.getPlayer(uuid), "skin", skinOwner); }
 	}
 
 	@Override
@@ -148,7 +148,7 @@ public class SkinManager implements ISkinManager {
 			}
 		});
 
-		if (PacketHandler.bungeeCord) { Main.getInstance().sendPluginMessage(Bukkit.getPlayer(uuid), "skin", "reset"); }
+		if (PacketOptions.bungeeCord) { Main.getInstance().sendPluginMessage(Bukkit.getPlayer(uuid), "skin", "reset"); }
 	}
 
 	@Override
@@ -193,11 +193,11 @@ public class SkinManager implements ISkinManager {
 			for (Player player1 : Bukkit.getOnlinePlayers()) {
 				if (player1.canSee(player)) {
 					canSee.add(player1);
-					player1.hidePlayer(player);
+					player1.hidePlayer(plugin, player);
 				}
 			}
 			for (Player player1 : canSee) {
-				player1.showPlayer(player);
+				player1.showPlayer(plugin, player);
 			}
 		});
 	}
@@ -369,7 +369,7 @@ public class SkinManager implements ISkinManager {
 			}
 		});
 
-		if (PacketHandler.bungeeCord) { Main.getInstance().sendPluginMessage(Bukkit.getPlayer(uuid), "name", "reset"); }
+		if (PacketOptions.bungeeCord) { Main.getInstance().sendPluginMessage(Bukkit.getPlayer(uuid), "name", "reset"); }
 	}
 
 	@Nonnull

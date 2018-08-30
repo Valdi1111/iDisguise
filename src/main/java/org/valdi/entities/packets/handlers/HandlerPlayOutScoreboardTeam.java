@@ -9,14 +9,12 @@ import org.bukkit.entity.Player;
 import org.valdi.entities.iDisguise;
 import org.valdi.entities.disguise.PlayerDisguise;
 import org.valdi.entities.management.DisguiseManager;
-import org.valdi.entities.management.PacketHandler;
+import org.valdi.entities.packets.PacketOptions;
 import org.valdi.entities.packets.ProtocolLibPacketListener;
 
 import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.events.ListenerPriority;
 import com.comphenix.protocol.events.PacketEvent;
-
-import de.robingrether.util.ObjectUtil;
 
 public class HandlerPlayOutScoreboardTeam extends ProtocolLibPacketListener {
 
@@ -26,7 +24,7 @@ public class HandlerPlayOutScoreboardTeam extends ProtocolLibPacketListener {
 	
 	@Override
 	public void onPacketSending(PacketEvent e) {
-		if(PacketHandler.modifyScoreboardPackets) {
+		if(PacketOptions.modifyScoreboardPackets) {
 			//iDisguise.getInstance().getLogger().info("Skipping scoreboard team packet.");
 			return;
 		}

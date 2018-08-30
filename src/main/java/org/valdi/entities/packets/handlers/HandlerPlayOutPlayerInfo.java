@@ -12,8 +12,8 @@ import org.valdi.entities.iDisguise;
 import org.valdi.entities.disguise.Disguise;
 import org.valdi.entities.disguise.PlayerDisguise;
 import org.valdi.entities.management.DisguiseManager;
-import org.valdi.entities.management.PacketHandler;
 import org.valdi.entities.management.profile.GameProfileHelper;
+import org.valdi.entities.packets.PacketOptions;
 import org.valdi.entities.packets.ProtocolLibPacketListener;
 
 import com.comphenix.protocol.PacketType;
@@ -69,7 +69,7 @@ public class HandlerPlayOutPlayerInfo extends ProtocolLibPacketListener {
 				WrappedGameProfile profile = offlinePlayer.isOnline() ? WrappedGameProfile.fromPlayer(offlinePlayer.getPlayer()) : WrappedGameProfile.fromOfflinePlayer(offlinePlayer);
 				return new PlayerInfoData(profile, latency, gameMode, displayName);
 			} else if(disguise instanceof PlayerDisguise) {
-				if(PacketHandler.modifyPlayerListEntry) {
+				if(PacketOptions.modifyPlayerListEntry) {
 					WrappedGameProfile profile = GameProfileHelper.getInstance().getGameProfile(formatUniqueId(offlinePlayer.getUniqueId()), ((PlayerDisguise)disguise).getSkinName(), ((PlayerDisguise)disguise).getDisplayName());
 					WrappedChatComponent tabName = displayName != null ? WrappedChatComponent.fromJson(this.fromComponent(displayName, EnumChatFormat.WHITE).replace(offlinePlayer.getName(), ((PlayerDisguise)disguise).getDisplayName())) : null;
 					return new PlayerInfoData(profile, latency, gameMode, tabName);
@@ -78,7 +78,7 @@ public class HandlerPlayOutPlayerInfo extends ProtocolLibPacketListener {
 					WrappedChatComponent tabName = displayName != null ? displayName : WrappedChatComponent.fromChatMessage(offlinePlayer.isOnline() ? offlinePlayer.getPlayer().getPlayerListName() : offlinePlayer.getName())[0];
 					return new PlayerInfoData(profile, latency, gameMode, tabName);
 				}
-			} else if(!PacketHandler.modifyPlayerListEntry) {
+			} else if(!PacketOptions.modifyPlayerListEntry) {
 				WrappedGameProfile profile = offlinePlayer.isOnline() ? WrappedGameProfile.fromPlayer(offlinePlayer.getPlayer()) : WrappedGameProfile.fromOfflinePlayer(offlinePlayer);
 				return new PlayerInfoData(profile, latency, gameMode, displayName);
 			}
@@ -89,7 +89,7 @@ public class HandlerPlayOutPlayerInfo extends ProtocolLibPacketListener {
 	}
 	
 	private UUID formatUniqueId(UUID origin) {
-		return PacketHandler.bungeeCord ? new UUID(origin.getMostSignificantBits() & 0xFFFFFFFFFFFF0FFFL | 0x0000000000005000, origin.getLeastSignificantBits()) : origin;
+		return PacketOptions.bungeeCord ? new UUID(origin.getMostSignificantBits() & 0xFFFFFFFFFFFF0FFFL | 0x0000000000005000, origin.getLeastSignificantBits()) : origin;
 	}
 	
 	private String fromComponent(WrappedChatComponent component, EnumChatFormat defaultColor) {

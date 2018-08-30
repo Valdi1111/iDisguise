@@ -42,9 +42,9 @@ import org.valdi.entities.disguise.WolfDisguise;
 import org.valdi.entities.disguise.ZombieVillagerDisguise;
 import org.valdi.entities.disguise.LlamaDisguise.SaddleColor;
 import org.valdi.entities.management.DisguiseManager;
-import org.valdi.entities.management.PacketHandler;
 import org.valdi.entities.management.VersionHelper;
 import org.valdi.entities.management.util.EntityIdList;
+import org.valdi.entities.packets.PacketOptions;
 
 import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.events.ListenerPriority;
@@ -145,7 +145,7 @@ public class HandlerPlayOutNamedEntitySpawn extends AbstractPlayOutEntitySpawn {
 				MobDisguise mobDisguise = (MobDisguise) disguise;
 				EntityLiving entity = (EntityLiving) Class.forName(VersionHelper.getNMSPackage() + "." + type.getNMSClass()).getConstructor(World.class).newInstance(entityLiving.getWorld());
 				
-				if(PacketHandler.showOriginalPlayerName) {
+				if(PacketOptions.showOriginalPlayerName) {
 					entity.setCustomName(player.getName());
 					entity.setCustomNameVisible(true);
 				} else if(mobDisguise.getCustomName() != null && !mobDisguise.getCustomName().isEmpty()) {
@@ -279,7 +279,7 @@ public class HandlerPlayOutNamedEntitySpawn extends AbstractPlayOutEntitySpawn {
 				entity.setLocation(loc.getX(), loc.getY(), loc.getZ(), loc.getYaw(), loc.getPitch());
 				entity.h(player.getEntityId()); // TODO change for 1.13 entity.setId(int id) -> f(int id)
 
-				if(PacketHandler.showOriginalPlayerName) {
+				if(PacketOptions.showOriginalPlayerName) {
 					entity.setCustomName(player.getName());
 					entity.setCustomNameVisible(true);
 				} else if(objectDisguise.getCustomName() != null && !objectDisguise.getCustomName().isEmpty()) {

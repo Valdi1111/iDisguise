@@ -5,7 +5,7 @@ import org.bukkit.entity.Player;
 import org.valdi.entities.iDisguise;
 import org.valdi.entities.disguise.PlayerDisguise;
 import org.valdi.entities.management.DisguiseManager;
-import org.valdi.entities.management.PacketHandler;
+import org.valdi.entities.packets.PacketOptions;
 import org.valdi.entities.packets.ProtocolLibPacketListener;
 
 import com.comphenix.protocol.PacketType;
@@ -20,13 +20,13 @@ public class HandlerPlayOutScoreboardScore extends ProtocolLibPacketListener {
 	
 	@Override
 	public void onPacketSending(PacketEvent e) {
-		if(PacketHandler.modifyScoreboardPackets) {
+		if(PacketOptions.modifyScoreboardPackets) {
 			//iDisguise.getInstance().getLogger().info("Skipping scoreboard score packet.");
 			return;
 		}
 
 		Player observer = e.getPlayer();
-		Player player = Bukkit.getPlayer(e.getPacket().getStrings().read(0));
+		Player player = Bukkit.getPlayerExact(e.getPacket().getStrings().read(0));
 		if(player != null && player != observer && DisguiseManager.isDisguisedTo(player, observer) && DisguiseManager.getDisguise(player) instanceof PlayerDisguise) {
 			e.getPacket().getStrings().write(0, ((PlayerDisguise)DisguiseManager.getDisguise(player)).getDisplayName());
 		}

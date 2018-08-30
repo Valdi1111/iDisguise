@@ -18,11 +18,13 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Team;
+import org.valdi.entities.iDisguise;
 import org.valdi.entities.disguise.Disguise;
 import org.valdi.entities.disguise.PlayerDisguise;
 import org.valdi.entities.management.hooks.ScoreboardHooks;
 import org.valdi.entities.management.profile.GameProfileHelper;
 import org.valdi.entities.management.util.DisguiseMap;
+import org.valdi.entities.packets.PacketOptions;
 
 import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.ProtocolLibrary;
@@ -270,10 +272,10 @@ public final class DisguiseManager {
 	
 	private static void hidePlayerFromOne(Player observer, Player player) {
 		// hide the player
-		observer.hidePlayer(player);
+		observer.hidePlayer(iDisguise.getInstance(), player);
 		
 		// do we care about scoreboard packets?
-		if(!PacketHandler.modifyScoreboardPackets) {
+		if(!PacketOptions.modifyScoreboardPackets) {
 			return;
 		}
 		
@@ -368,7 +370,7 @@ public final class DisguiseManager {
 			showPlayerToOne(observer, player, false);
 		}
 		
-		if(PacketHandler.modifyScoreboardPackets) {
+		if(PacketOptions.modifyScoreboardPackets) {
 			// update scoreboard hooks
 			ScoreboardHooks.updatePlayer(player);
 		}
@@ -380,10 +382,10 @@ public final class DisguiseManager {
 	
 	private static void showPlayerToOne(final Player observer, final Player player, boolean scoreHook) {
 		// show the player
-		observer.showPlayer(player);
+		observer.showPlayer(iDisguise.getInstance(), player);
 		
 		// do we care about scoreboard packets?
-		if(!PacketHandler.modifyScoreboardPackets) {
+		if(!PacketOptions.modifyScoreboardPackets) {
 			return;
 		}
 		

@@ -28,7 +28,7 @@ import org.inventivetalent.data.async.DataCallback;
 import org.inventivetalent.mcwrapper.auth.GameProfileWrapper;
 import org.inventivetalent.packetlistener.PacketListenerAPI;
 import org.valdi.entities.iDisguise;
-import org.valdi.entities.management.PacketHandler;
+import org.valdi.entities.packets.PacketOptions;
 import org.valdi.st.event.ChatInReplacementEvent;
 import org.valdi.st.event.ChatOutReplacementEvent;
 import org.valdi.st.event.ChatReplacementEvent;
@@ -113,7 +113,7 @@ public class Main implements Listener, PluginMessageListener {
 
 		Bukkit.getPluginManager().registerEvents(this, plugin);
 
-		if (PacketHandler.bungeeCord) {
+		if (PacketOptions.bungeeCord) {
 			if (Bukkit.getOnlineMode()) {
 				getLogger().warning("Bungeecord is enabled, but server is in online mode!");
 			}
@@ -195,7 +195,7 @@ public class Main implements Listener, PluginMessageListener {
 
 	@EventHandler(priority = EventPriority.MONITOR)
 	public void on(SkinLoadedEvent event) {
-		if (PacketHandler.bungeeCord) {
+		if (PacketOptions.bungeeCord) {
 			if (Bukkit.getOnlinePlayers().isEmpty()) {
 				getLogger().warning("Cannot send skin data to Bungeecord: no players online");
 				return;
@@ -218,7 +218,7 @@ public class Main implements Listener, PluginMessageListener {
 			String replacedMessage = SkinAPI.replaceNames(message, nickedPlayerNames, new NameReplacer() {
 				@Override
 				public String replace(String original) {
-					Player player = Bukkit.getPlayer(original);
+					Player player = Bukkit.getPlayerExact(original);
 					if (player != null) {
 						NameReplacementEvent replacementEvent = new ChatReplacementEvent(player, event.getRecipients(), message, original, original);
 						Bukkit.getPluginManager().callEvent(replacementEvent);
@@ -240,7 +240,7 @@ public class Main implements Listener, PluginMessageListener {
 			String replacedMessage = SkinAPI.replaceNames(message, nickedPlayerNames, new NameReplacer() {
 				@Override
 				public String replace(String original) {
-					Player player = Bukkit.getPlayer(original);
+					Player player = Bukkit.getPlayerExact(original);
 					if (player != null) {
 						PlayerJoinReplacementEvent replacementEvent = new PlayerJoinReplacementEvent(player, Bukkit.getOnlinePlayers(), message, original, original);
 						Bukkit.getPluginManager().callEvent(replacementEvent);
@@ -324,7 +324,7 @@ public class Main implements Listener, PluginMessageListener {
 			String replacedMessage = SkinAPI.replaceNames(message, nickedPlayerNames, new NameReplacer() {
 				@Override
 				public String replace(String original) {
-					Player player = Bukkit.getPlayer(original);
+					Player player = Bukkit.getPlayerExact(original);
 					if (player != null) {
 						PlayerQuitReplacementEvent replacementEvent = new PlayerQuitReplacementEvent(player, Bukkit.getOnlinePlayers(), message, original, original);
 						Bukkit.getPluginManager().callEvent(replacementEvent);
@@ -347,7 +347,7 @@ public class Main implements Listener, PluginMessageListener {
 				String replacedCompletion = SkinAPI.replaceNames(completion, nickedPlayerNames, new NameReplacer() {
 					@Override
 					public String replace(String original) {
-						Player player = Bukkit.getPlayer(original);
+						Player player = Bukkit.getPlayerExact(original);
 						if (player != null) {
 							PlayerQuitReplacementEvent replacementEvent = new PlayerQuitReplacementEvent(player, Bukkit.getOnlinePlayers(), completion, original, original);
 							Bukkit.getPluginManager().callEvent(replacementEvent);
@@ -434,7 +434,7 @@ public class Main implements Listener, PluginMessageListener {
 	}
 
 	public void sendPluginMessage(Player player, String action, String... values) {
-		if (!PacketHandler.bungeeCord) { return; }
+		if (!PacketOptions.bungeeCord) { return; }
 		if (player == null || !player.isOnline()) { return; }
 
 		ByteArrayDataOutput out = ByteStreams.newDataOutput();
@@ -448,7 +448,7 @@ public class Main implements Listener, PluginMessageListener {
 
 	@Override
 	public void onPluginMessageReceived(String s, Player player, byte[] bytes) {
-		if (!PacketHandler.bungeeCord) { return; }
+		if (!PacketOptions.bungeeCord) { return; }
 		if ("NickNamer".equals(s)) {
 			ByteArrayDataInput in = ByteStreams.newDataInput(bytes);
 			String sub = in.readUTF();

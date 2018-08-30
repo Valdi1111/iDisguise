@@ -32,8 +32,8 @@ public class HandlerPlayInUseEntity extends ProtocolLibPacketListener {
 			DisguiseType type = DisguiseManager.getDisguise(livingEntity).getType();
 			if(type == DisguiseType.SHEEP || type == DisguiseType.WOLF) {
 				Bukkit.getScheduler().runTaskLater(iDisguise.getInstance(), () -> {
-						DisguiseManager.resendPackets(livingEntity);
-						observer.updateInventory();
+					DisguiseManager.resendPackets(livingEntity);
+					observer.updateInventory();
 				}, 2L);
 			}
 			if(livingEntity instanceof Player) Bukkit.getPluginManager().callEvent(new PlayerInteractDisguisedPlayerEvent(observer, (Player)livingEntity));

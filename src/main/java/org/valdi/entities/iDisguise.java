@@ -56,13 +56,13 @@ import org.valdi.entities.io.Language;
 import org.valdi.entities.io.SLAPI;
 import org.valdi.entities.io.UpdateCheck;
 import org.valdi.entities.management.DisguiseManager;
-import org.valdi.entities.management.PacketHandler;
 import org.valdi.entities.management.ProfileHelper;
 import org.valdi.entities.management.Sounds;
 import org.valdi.entities.management.VersionHelper;
 //import org.valdi.entities.management.channel.ChannelInjector;
 import org.valdi.entities.management.hooks.ScoreboardHooks;
 import org.valdi.entities.management.util.EntityIdList;
+import org.valdi.entities.packets.PacketOptions;
 import org.valdi.entities.packets.ProtocolLibPacketsManager;
 import org.valdi.st.CustomSkins;
 import org.valdi.st.Main;
@@ -926,11 +926,16 @@ public class iDisguise extends JavaPlugin {
 		language.saveData();
 		
 		// reset config values
-		PacketHandler.showOriginalPlayerName = configuration.NAME_TAG_SHOWN;
+		/*PacketHandler.showOriginalPlayerName = configuration.NAME_TAG_SHOWN;
 		PacketHandler.modifyPlayerListEntry = configuration.MODIFY_PLAYER_LIST_ENTRY;
 		PacketHandler.modifyScoreboardPackets = configuration.MODIFY_SCOREBOARD_PACKETS;
 		PacketHandler.replaceSoundEffects = configuration.REPLACE_SOUND_EFFECTS;
-		PacketHandler.bungeeCord = configuration.BUNGEE_CORD;
+		PacketHandler.bungeeCord = configuration.BUNGEE_CORD;*/
+		PacketOptions.showOriginalPlayerName = configuration.NAME_TAG_SHOWN;
+		PacketOptions.modifyPlayerListEntry = configuration.MODIFY_PLAYER_LIST_ENTRY;
+		PacketOptions.modifyScoreboardPackets = configuration.MODIFY_SCOREBOARD_PACKETS;
+		PacketOptions.replaceSoundEffects = configuration.REPLACE_SOUND_EFFECTS;
+		PacketOptions.bungeeCord = configuration.BUNGEE_CORD;
 		
 		// setup hooks
 		if(configuration.MODIFY_SCOREBOARD_PACKETS) {
@@ -1165,11 +1170,11 @@ public class iDisguise extends JavaPlugin {
 			}
 			
 			public boolean isSoundsEnabled() {
-				return PacketHandler.replaceSoundEffects;
+				return PacketOptions.replaceSoundEffects;
 			}
 			
 			public void setSoundsEnabled(boolean enabled) {
-				PacketHandler.replaceSoundEffects = enabled;
+				PacketOptions.replaceSoundEffects = enabled;
 			}
 			
 			public boolean hasPermission(Player player, DisguiseType type) {
