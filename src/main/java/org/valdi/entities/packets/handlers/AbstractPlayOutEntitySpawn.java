@@ -1,13 +1,5 @@
 package org.valdi.entities.packets.handlers;
 
-import static org.valdi.entities.management.Reflection.CraftChatMessage_fromComponent;
-import static org.valdi.entities.management.Reflection.CraftChatMessage_fromString;
-import static org.valdi.entities.management.Reflection.CraftOfflinePlayer_getProfile;
-import static org.valdi.entities.management.Reflection.CraftPlayer_getProfile;
-import static org.valdi.entities.management.Reflection.EnumChatFormat_WHITE;
-import static org.valdi.entities.management.Reflection.PlayerInfoData_new;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -16,7 +8,6 @@ import java.util.logging.Level;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.craftbukkit.v1_12_R1.entity.CraftLivingEntity;
 import org.bukkit.craftbukkit.v1_12_R1.inventory.CraftItemStack;
 import org.bukkit.entity.LivingEntity;
@@ -53,7 +44,6 @@ import org.valdi.entities.disguise.ZombieVillagerDisguise;
 import org.valdi.entities.disguise.LlamaDisguise.SaddleColor;
 import org.valdi.entities.management.DisguiseManager;
 import org.valdi.entities.management.PacketHandler;
-import org.valdi.entities.management.ProfileHelper;
 import org.valdi.entities.management.VersionHelper;
 import org.valdi.entities.management.profile.GameProfileHelper;
 import org.valdi.entities.management.reflection.EntityHumanNonAbstract;
@@ -112,7 +102,7 @@ public abstract class AbstractPlayOutEntitySpawn extends ProtocolLibPacketListen
 		super(addon, listenerPriority, arrpacketType);
 	}
 	
-	protected List<PacketContainer> getSpawnPackets(LivingEntity livingEntity) {
+	/*protected List<PacketContainer> getSpawnPackets(LivingEntity livingEntity) {
 		try {
 			Disguise disguise = DisguiseManager.getDisguise(livingEntity);
 			if(disguise == null) return null;
@@ -353,22 +343,18 @@ public abstract class AbstractPlayOutEntitySpawn extends ProtocolLibPacketListen
 			e.printStackTrace();
 		}
 		return new ArrayList<>();
-	}
+	}*/
 	
-	private UUID formatUniqueId(UUID origin) {
-		return PacketHandler.bungeeCord ? new UUID(origin.getMostSignificantBits() & 0xFFFFFFFFFFFF0FFFL | 0x0000000000005000, origin.getLeastSignificantBits()) : origin;
-	}
-	
-	private PacketContainer getEntitySpawnPacket(Entity entity, int type, int data) {
+	protected PacketContainer getEntitySpawnPacket(Entity entity, int type, int data) {
 		PacketContainer spawnPacket = new PacketContainer(PacketType.Play.Server.SPAWN_ENTITY);
 		spawnPacket.getIntegers().write(0, entity.getId());
 		spawnPacket.getUUIDs().write(0, entity.getUniqueID());
+		spawnPacket.getIntegers().write(1, type);
 		spawnPacket.getDoubles().write(0, entity.locX);
 		spawnPacket.getDoubles().write(1, entity.locY);
 		spawnPacket.getDoubles().write(2, entity.locZ);
-		spawnPacket.getIntegers().write(1, MathHelper.d(entity.pitch * 256.0F / 360.0F));
-		spawnPacket.getIntegers().write(2, MathHelper.d(entity.yaw * 256.0F / 360.0F));
-		spawnPacket.getIntegers().write(3, type);
+		spawnPacket.getIntegers().write(2, MathHelper.d(entity.pitch * 256.0F / 360.0F));
+		spawnPacket.getIntegers().write(3, MathHelper.d(entity.yaw * 256.0F / 360.0F));
 		spawnPacket.getIntegers().write(4, data);
 		spawnPacket.getIntegers().write(5, (int) (MathHelper.a(entity.motX, -3.9D, 3.9D) * 8000.0D));
 		spawnPacket.getIntegers().write(6, (int) (MathHelper.a(entity.motY, -3.9D, 3.9D) * 8000.0D));
@@ -377,41 +363,13 @@ public abstract class AbstractPlayOutEntitySpawn extends ProtocolLibPacketListen
 		return spawnPacket;
 	}
 	
-	private PacketContainer getEntityMetaPacket(Entity entity) {
+	protected PacketContainer getEntityMetaPacket(Entity entity) {
 		PacketContainer metaPacket = new PacketContainer(PacketType.Play.Server.ENTITY_METADATA);
 		metaPacket.getIntegers().write(0, entity.getId());
 		WrappedDataWatcher watcher = WrappedDataWatcher.getEntityWatcher(entity.getBukkitEntity());
 		metaPacket.getWatchableCollectionModifier().write(0, watcher.getWatchableObjects());
 		
 		return metaPacket;
-	}
-	
-	private Object getPlayerInfo(OfflinePlayer offlinePlayer, Object context, int ping, Object gamemode, Object displayName) {
-		Disguise disguise = DisguiseManager.getDisguise(offlinePlayer);
-		try {
-			if(disguise == null) {
-				return PlayerInfoData_new.newInstance(context, offlinePlayer.isOnline() ? CraftPlayer_getProfile.invoke(offlinePlayer) : CraftOfflinePlayer_getProfile.invoke(offlinePlayer), ping, gamemode, displayName);
-			} else if(disguise instanceof PlayerDisguise) {
-				if(PacketHandler.modifyPlayerListEntry) {
-					return PlayerInfoData_new.newInstance(context,
-							ProfileHelper.getInstance().getGameProfile(formatUniqueId(offlinePlayer.getUniqueId()), ((PlayerDisguise)disguise).getSkinName(), ((PlayerDisguise)disguise).getDisplayName()),
-							ping, gamemode, displayName != null ?
-									Array.get(CraftChatMessage_fromString.invoke(null, ((String)CraftChatMessage_fromComponent.invoke(null, displayName, EnumChatFormat_WHITE.get(null))).replace(offlinePlayer.getName(), ((PlayerDisguise)disguise).getDisplayName())), 0) :
-									null);
-				} else {
-					return PlayerInfoData_new.newInstance(context,
-							ProfileHelper.getInstance().getGameProfile(formatUniqueId(offlinePlayer.getUniqueId()), ((PlayerDisguise)disguise).getSkinName(), ((PlayerDisguise)disguise).getDisplayName()),
-							ping, gamemode, displayName != null ? displayName : Array.get(CraftChatMessage_fromString.invoke(null, offlinePlayer.isOnline() ? offlinePlayer.getPlayer().getPlayerListName() : offlinePlayer.getName()), 0));
-				}
-			} else if(!PacketHandler.modifyPlayerListEntry) {
-				return PlayerInfoData_new.newInstance(context, offlinePlayer.isOnline() ? CraftPlayer_getProfile.invoke(offlinePlayer) : CraftOfflinePlayer_getProfile.invoke(offlinePlayer), ping, gamemode, displayName);
-			}
-		} catch(Exception e) {
-			if(VersionHelper.debug()) {
-				iDisguise.getInstance().getLogger().log(Level.SEVERE, "Cannot construct the required player info.", e);
-			}
-		}
-		return null;
 	}
 
 }

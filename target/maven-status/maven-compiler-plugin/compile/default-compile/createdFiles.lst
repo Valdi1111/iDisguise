@@ -70,7 +70,6 @@ org\valdi\entities\disguise\MinecartDisguise.class
 org\valdi\entities\packets\ProtocolLibPacketListener.class
 org\valdi\entities\disguise\HorseDisguise.class
 org\valdi\entities\management\profile\ProfileHelperUID$1.class
-org\valdi\entities\management\PacketHandler$1.class
 org\valdi\entities\management\Reflection.class
 org\valdi\entities\packets\ProtocolLibPacketsManager.class
 org\valdi\st\MoonAlien.class
@@ -83,7 +82,6 @@ org\valdi\st\SkinLoader.class
 org\valdi\entities\api\DisguiseAPI.class
 org\valdi\st\ParseCommand.class
 org\valdi\entities\disguise\FallingBlockDisguise.class
-org\valdi\entities\management\PacketHandler$2.class
 org\valdi\entities\EventListener$3.class
 org\valdi\st\event\SkinLoadedEvent.class
 org\valdi\entities\disguise\ObjectDisguise$1.class

@@ -32,7 +32,7 @@ import org.valdi.entities.disguise.PlayerDisguise;
 import org.valdi.entities.io.UpdateCheck;
 import org.valdi.entities.management.DisguiseManager;
 import org.valdi.entities.management.ProfileHelper;
-import org.valdi.entities.management.channel.ChannelInjector;
+//import org.valdi.entities.management.channel.ChannelInjector;
 import org.valdi.entities.management.util.EntityIdList;
 
 import de.robingrether.util.StringUtil;
@@ -55,7 +55,7 @@ public class EventListener implements Listener {
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void onPlayerJoinLowest(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
-		ChannelInjector.inject(player);
+//		ChannelInjector.inject(player);
 		EntityIdList.addEntity(player);
 	}
 	
@@ -97,7 +97,7 @@ public class EventListener implements Listener {
 				DisguiseManager.undisguise(player);
 			}
 		}
-		ChannelInjector.remove(player);
+//		ChannelInjector.remove(player);
 		EntityIdList.removeEntity(player);
 	}
 	

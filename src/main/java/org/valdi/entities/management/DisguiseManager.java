@@ -48,7 +48,7 @@ public final class DisguiseManager {
 	}
 	
 	public static synchronized void disguise(Player player, Disguise disguise) {
-		disguise(player, disguise);
+		disguise((LivingEntity) player, disguise);
 	}
 	
 	public static synchronized void disguise(LivingEntity livingEntity, Disguise disguise) {
@@ -69,7 +69,7 @@ public final class DisguiseManager {
 	}
 	
 	public static synchronized Disguise undisguise(Player player) {
-		return undisguise(player);
+		return undisguise((LivingEntity) player);
 	}
 	
 	public static synchronized Disguise undisguise(LivingEntity livingEntity) {

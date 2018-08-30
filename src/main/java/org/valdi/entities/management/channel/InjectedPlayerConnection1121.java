@@ -16,10 +16,13 @@ import net.minecraft.server.v1_12_R1.PacketPlayInTeleportAccept;
 import net.minecraft.server.v1_12_R1.PacketPlayInUseEntity;
 import net.minecraft.server.v1_12_R1.PlayerConnection;
 
+@Deprecated
 public class InjectedPlayerConnection1121 extends PlayerConnection implements InjectedPlayerConnection {
-	
+
+	@Deprecated
 	private final Player observer;
-	
+
+	@Deprecated
 	public InjectedPlayerConnection1121(Player observer, Object originalConnection) throws Exception {
 		super(MinecraftServer.getServer(), ((PlayerConnection)originalConnection).networkManager, ((CraftPlayer)observer).getHandle());
 		this.observer = observer;
@@ -30,7 +33,8 @@ public class InjectedPlayerConnection1121 extends PlayerConnection implements In
 			}
 		}
 	}
-	
+
+	@Deprecated
 	public void resetToDefaultConnection() throws Exception {
 		PlayerConnection defaultConnection = new PlayerConnection(MinecraftServer.getServer(), networkManager, player);
 		for(Field field : PlayerConnection.class.getDeclaredFields()) {
@@ -40,22 +44,26 @@ public class InjectedPlayerConnection1121 extends PlayerConnection implements In
 			}
 		}
 	}
-	
+
+	@Deprecated
 	public void sendPacket(Object packet) {
 		if(packet instanceof Packet) sendPacket((Packet)packet);
 	}
-	
+
+	@Deprecated
 	public void sendPacketDirectly(Object packet) {
 		if(packet instanceof Packet) super.sendPacket((Packet)packet);
 	}
-	
+
+	@Deprecated
 	public void a(PacketPlayInTeleportAccept packet) {
 		try {
 			super.a(packet);
 		} catch(NullPointerException e) {
 		}
 	}
-	
+
+	@Deprecated
 	public void a(PacketPlayInUseEntity packet) {
 		try {
 			packet = (PacketPlayInUseEntity)PacketHandler.handlePacketPlayInUseEntity(observer, packet);
@@ -68,7 +76,8 @@ public class InjectedPlayerConnection1121 extends PlayerConnection implements In
 			}
 		}
 	}
-	
+
+	@Deprecated
 	public void sendPacket(Packet packet) {
 		Object[] packets = PacketHandler.handlePacketOut(observer, packet);
 		for(Object p : packets) {

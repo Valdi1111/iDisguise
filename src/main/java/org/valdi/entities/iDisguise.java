@@ -60,7 +60,7 @@ import org.valdi.entities.management.PacketHandler;
 import org.valdi.entities.management.ProfileHelper;
 import org.valdi.entities.management.Sounds;
 import org.valdi.entities.management.VersionHelper;
-import org.valdi.entities.management.channel.ChannelInjector;
+//import org.valdi.entities.management.channel.ChannelInjector;
 import org.valdi.entities.management.hooks.ScoreboardHooks;
 import org.valdi.entities.management.util.EntityIdList;
 import org.valdi.entities.packets.ProtocolLibPacketsManager;
@@ -120,7 +120,7 @@ public class iDisguise extends JavaPlugin {
 //			EntityIdList.addPlayer(player);
 			ProfileHelper.getInstance().registerGameProfile(player);
 		}
-		ChannelInjector.injectOnlinePlayers();
+//		ChannelInjector.injectOnlinePlayers();
 		DisguiseManager.resendPackets();
 		if(getServer().getPluginManager().getPlugin("iDisguiseAdditions") != null) {
 			int version = Integer.parseInt(getServer().getPluginManager().getPlugin("iDisguiseAdditions").getDescription().getVersion().replace("-SNAPSHOT", "").replace(".", ""));
@@ -150,7 +150,7 @@ public class iDisguise extends JavaPlugin {
 		if(configuration.KEEP_DISGUISE_SHUTDOWN) {
 			saveDisguises();
 		}
-		ChannelInjector.removeOnlinePlayers();
+//		ChannelInjector.removeOnlinePlayers();
 		getLogger().log(Level.INFO, String.format("%s disabled!", getFullName()));
 		enabled = false;
 		Main.getInstance().onDisable();
